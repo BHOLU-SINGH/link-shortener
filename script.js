@@ -8,7 +8,7 @@ let container = document.querySelector(".container"),
   readMore = document.querySelector(".read-more"),
   shorten_link_div = document.querySelector(".shorten_link_div"),
   buttons = document.querySelectorAll(".btn-div button"),
-  footer = document.querySelector('footer p span');
+  footer = document.querySelector("footer p span");
 
 message.classList.remove("error", "success", "warning", "flex");
 
@@ -43,16 +43,30 @@ generate.addEventListener("click", () => {
     shorten_link_div.style.display = "flex";
 
     //calling api
-    fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
-      .then((response) => response.json())
-      .then((value) => {
-        shorten_link.value = value.result.short_link;
-      })
-      .catch((error) => {
-        // catch all error that occur in calling api
-        hangleClasses("flex", "Something went wrong, Try again!")
+    const api = new URL("https://t.ly/api/v1/link/shorten");
+    const headers = {
+      Authorization:
+        "Bearer K74mbi0ZE9gyD92uZKG5umQ6oXS4EHCLbOqymJv1yRTDS9JXNEXzSe2RB17R",
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    };
+    let long_url = url;
+    let data;
+
+    fetch(api, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ long_url }),
+    }).then(async (response) => {
+      data = await response.json();
+      shorten_link.value = data.short_url;
+    })
+    .catch((error) => {
+      // catch all error that occur in calling api
+      // console.log("Error is : "+error);
+        hangleClasses("flex", "Something went wrong, Try again!");
         shorten_link_div.style.display = "none";
-      });
+    })
   } else {
     hangleClasses("warning", "Please enter url!");
     shorten_link_div.style.display = "none";
@@ -74,7 +88,6 @@ copy.addEventListener("click", () => {
   }
 });
 
-
 // Hide link shortener page and show details page
 readMore.addEventListener("click", () => {
   container.classList.add("hide-box");
@@ -87,7 +100,6 @@ buttons.forEach((item) => {
   });
 });
 
-
 // Change copyright year automatically
 window.addEventListener("load", () => {
   let date = new Date();
@@ -95,4 +107,4 @@ window.addEventListener("load", () => {
   curr_date = date.getFullYear();
   next_date = date.getFullYear() + 1;
   footer.innerHTML = curr_date + "-" + next_date;
-})
+});
