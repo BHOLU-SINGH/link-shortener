@@ -8,7 +8,9 @@ let container = document.querySelector(".container"),
   readMore = document.querySelector(".read-more"),
   shorten_link_div = document.querySelector(".shorten_link_div"),
   buttons = document.querySelectorAll(".btn-div button"),
-  footer = document.querySelector("footer p span");
+  footer = document.querySelector("footer p span"),
+  contactUs = document.querySelector(".contact-us"),
+  returnBtn = document.querySelector(".return");
 
 message.classList.remove("error", "success", "warning", "flex");
 
@@ -35,6 +37,18 @@ const hangleClasses = (className, msg) => {
       "Shorten your links quickly and easily with FreeProjects1. Our link shortener is free to use.";
   }, 5000);
 };
+
+
+contactUs.addEventListener("click", () => {
+  container.classList.remove("hide-box");
+  container.classList.add("hide-all");
+  container.classList.remove("hide-contact-us");
+});
+returnBtn.addEventListener("click", () => {
+  container.classList.remove("hide-box");
+  container.classList.remove("hide-all");
+  container.classList.add("hide-contact-us");
+});
 
 // If user enter the link then short this link via calling a third party api
 generate.addEventListener("click", () => {
@@ -105,6 +119,6 @@ window.addEventListener("load", () => {
   let date = new Date();
   let curr_date, next_date;
   curr_date = date.getFullYear();
-  next_date = date.getFullYear() + 1;
-  footer.innerHTML = curr_date + "-" + next_date;
+  // next_date = date.getFullYear() + 1;
+  footer.innerHTML = curr_date;
 });
