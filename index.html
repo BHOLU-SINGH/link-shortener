@@ -64,19 +64,21 @@
       </div>
 
       <div class="contact-box">
-        <form action="#">
-          <h2>Report Issue</h2>
+        <form action="https://formspree.io/f/mzbqlnvv" method="POST">
+          <h2>Share Feedback</h2>
+          <!-- <p><small>Let us know what you think, Help us make our link shortener better.</small></p> -->
+          <p><small>Share your feedback today and help us make our link shortener even better!</small></p>
           <div class="form-control">
             <label for="username">Username</label>
-            <input type="text" placeholder="Username" required />
+            <input type="text" name="username" placeholder="Username" required />
           </div>
           <div class="form-control">
             <label for="email">Email Address</label>
-            <input type="email" placeholder="Email Address" required />
+            <input type="email" name="email" placeholder="Email Address" required />
           </div>
           <div class="form-control">
             <label>Message</label>
-            <textarea rows="4" placeholder="Type your query..."></textarea>
+            <textarea rows="4" name="message" placeholder="Type your query..."></textarea>
           </div>
           <div class="btn-div">
             <button class="return" type="button"><i class="bi bi-arrow-return-left"></i> Go Back</button>
