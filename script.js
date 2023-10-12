@@ -24,7 +24,7 @@ original_link.addEventListener("focus", () => {
 });
 
 // handleClasses call when we want to show some message to user
-const hangleClasses = (className, msg) => {
+const handleClasses = (className, msg) => {
   message.classList.remove("none");
   message.classList.add("flex", `${className}`);
   message.innerHTML = `${msg}`;
@@ -45,7 +45,7 @@ contactUs.addEventListener("click", () => {
   container.classList.remove("hide-contact-us");
 });
 returnBtn.addEventListener("click", () => {
-  container.classList.remove("hide-box");
+  container.classList.add("hide-box");
   container.classList.remove("hide-all");
   container.classList.add("hide-contact-us");
 });
@@ -78,27 +78,27 @@ generate.addEventListener("click", () => {
     .catch((error) => {
       // catch all error that occur in calling api
       // console.log("Error is : "+error);
-        hangleClasses("flex", "Something went wrong, Try again!");
+        handleClasses("flex", "Something went wrong, Try again!");
         shorten_link_div.style.display = "none";
     })
   } else {
-    hangleClasses("warning", "Please enter url!");
+    handleClasses("warning", "Please enter url!");
     shorten_link_div.style.display = "none";
   }
 });
 
-// Enavbling copy button functionality
+// Enabling copy button functionality
 copy.addEventListener("click", () => {
   if (shorten_link.value.length > 0) {
     navigator.clipboard.writeText(shorten_link.value);
-    hangleClasses("success", "Link successfully copied!");
+    handleClasses("success", "Link successfully copied!");
     copy.innerHTML = "Copied!";
 
     setTimeout(() => {
       copy.innerHTML = "copy";
     }, 1000);
   } else {
-    hangleClasses("warning", "Please first generate link!");
+    handleClasses("warning", "Please first generate link!");
   }
 });
 
