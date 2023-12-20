@@ -60,7 +60,7 @@ generate.addEventListener("click", () => {
     const api = new URL("https://t.ly/api/v1/link/shorten");
     const headers = {
       Authorization:
-        "Bearer K74mbi0ZE9gyD92uZKG5umQ6oXS4EHCLbOqymJv1yRTDS9JXNEXzSe2RB17R",
+        "Bearer EhA1r50Ndd0uMDSjeR5x6NYbpZUcPMKWAYMQW4c8F43voHUlaAk2fWX57qlT",
       "Content-Type": "application/json",
       Accept: "application/json",
     };
